@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--约束文件，限制，检查在当前文件中出现的标签，属性必须符号mybatis的要求-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD MApper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mapper 是当前文件的根标签，必须的
+namespace：叫做命名空间，唯一值的，可以是自定义的字符串
+            要求使用全限定名称   绝对路径
+
+在当前文件中，可以使用特定的标签，表示数据库的特定操作。
+<select>:表示执行查询
+<update>:表示更新数据库的操作，就是在<update>标签中，写的是update语句
+<insert>：表示插入，放的是insert语句
+<delete>:表示删除，执行delete语句
+
+id：你要执行的sql语句的唯一标识，mybatis会使用这个id的值来找要执行的语句
+    要求定义方法名
+resultType：表示结果类型，是sql语句执行后得到的ResultSet遍历结果得到java对象
+-->
+<mapper namespace="com.wangkaiping.dao.StudentDao">
+    <!--获取用户信息-->
+    <select id="findStudentById" resultType="com.wangkaiping.domain.Student">
+select * from tbl_student where student_id=#{studentId}
+</select>
+
+    <!--获取用户需要参加的考试数量-->
+   <select id="getWaitExamNum" parameterType="map" resultType="java.lang.Integer">
+       /*select count(*) from tbl_student join student_paper on tbl_student.student_id=student_paper.student_id where tbl_student.student_id=20180001 and state=0*/
+       select count(*)
+       from tbl_student
+           join student_paper
+               on tbl_student.student_id=student_paper.student_id
+           join tbl_paper
+               on student_paper.paper_id=tbl_paper.paper_id
+       where tbl_student.student_id=#{studentId} and state=0 and tbl_paper.paper_endTime>#{newDate}
+   </select>
+
+    <!--获取用户有关的考试-->
+    <select id="getPaper" parameterType="java.lang.Integer" resultType="com.wangkaiping.vo.PaperVo">
+        select
+            tbl_paper.paper_id as paperId,tbl_paper.paper_name as paperName,tbl_paper.paper_startTime as paperStartTime,tbl_paper.paper_endTime as paperEndTime,tbl_manage.manage_name as manage,student_paper.state as state
+        from tbl_paper
+                 join
+             student_paper
+             on
+                 tbl_paper.paper_id=student_paper.paper_id
+                 join
+             tbl_manage
+             on
+                 tbl_paper.paper_createBy=tbl_manage.manage_id
+        where student_paper.student_id=#{studentId}
+        order by student_paper.state asc,tbl_paper.paper_endTime desc
+    </select>
+
+    <!--获取试卷的题目-->
+    <select id="getExam" parameterType="java.lang.Integer" resultType="com.wangkaiping.domain.Question">
+        select * from tbl_question where question_id in (SELECT question_id from `paper-question` where paper_id=#{id})
+    </select>
+
+    <!--获取用户的错题-->
+    <select id="getMisTake" parameterType="java.lang.Integer" resultType="com.wangkaiping.vo.MistakeVo">
+        select mistake_id as mistakeId,tbl_question.question_topic,tbl_question.question_A,tbl_question.question_B,tbl_question.question_C,tbl_question.question_D,tbl_question.answer
+        from tbl_mistake
+                 join tbl_question
+                      on tbl_mistake.question_id=tbl_question.question_id
+        where tbl_mistake.student_id=#{studentId}
+    </select>
+
+    <!--修改用户的自我评价-->
+    <update id="editEvaluation">
+        update tbl_student set student_evaluation=#{context} where student_id=#{studentId}
+    </update>
+</mapper>
