@@ -1,5 +1,7 @@
 package com.wangkaiping.controller.studentController;
 
+import com.wangkaiping.domain.Question;
+import com.wangkaiping.service.QuestionService;
 import com.wangkaiping.service.StudentService;
 import com.wangkaiping.vo.MistakeVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,8 @@ import java.util.*;
 public class MyController {
     @Autowired
     private StudentService studentServiceImpl;
-
+    @Autowired
+    private QuestionService questionServiceImpl;
     //获取待考通知上未完成的试卷数量
     @RequestMapping("/getWaitExamNum.do")
     public @ResponseBody Integer getWaitExamNum(){
@@ -30,7 +33,6 @@ public class MyController {
         Integer result = studentServiceImpl.getWaitExamNum(map);
         return result;
     }
-
     //跳转到错题回顾
     @RequestMapping("/workbean/studentInterface/mistake/mistake.do")
     public ModelAndView toMisTake(){
@@ -43,6 +45,19 @@ public class MyController {
         modelAndView.setViewName("workbean/studentInterface/mistake/mistake");
         return modelAndView;
     }
+
+    //查看详情
+    @RequestMapping("/getQuestionById.do")
+    public ModelAndView getOption(Integer questionId,String userAnswer){
+        System.out.println("进入到了getQuestionById.do");
+        System.out.println(userAnswer);
+        ModelAndView modelAndView = new ModelAndView();
+        Question question = questionServiceImpl.getQuestionById(questionId);
+        modelAndView.addObject("question",question);
+        modelAndView.setViewName("workbean/studentInterface/waitexam/questionParsing");
+        return modelAndView;
+    }
+
     //跳转到考试通知
     @RequestMapping("/kaoShiNotify.do")
     public String kaoShiNotify(){

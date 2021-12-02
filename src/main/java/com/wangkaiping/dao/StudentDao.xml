@@ -52,7 +52,7 @@ select * from tbl_student where student_id=#{studentId}
         order by student_paper.state asc,tbl_paper.paper_endTime desc
     </select>
 
-    <!--获取试卷的题目-->
+    <!--根据试卷编号获取试卷的题目-->
     <select id="getExam" parameterType="java.lang.Integer" resultType="com.wangkaiping.domain.Question">
         select * from tbl_question where question_id in (SELECT question_id from `paper-question` where paper_id=#{id})
     </select>

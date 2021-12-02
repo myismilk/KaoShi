@@ -21,7 +21,7 @@
 <script type="application/javascript" src="jQuery/jquery.js"></script>
 <script type="application/javascript">
     $(function (){
-        var html = '<tr style="background-color: cadetblue"> <td style="height: 60px">考试名称</td> <td style="height: 60px">考试开始时间</td> <td style="height: 60px">考试结束时间</td> <td style="height: 60px">考试发布者</td> <td style="height: 60px">操作</td> </tr>';
+        var html = '<tr style="background-color: deepskyblue"> <td style="height: 60px">考试名称</td> <td style="height: 60px">考试开始时间</td> <td style="height: 60px">考试结束时间</td> <td style="height: 60px">考试发布者</td> <td style="height: 60px">操作</td> </tr>';
         $.ajax({
             url:"workbean/waitexam/getPaper.do",
             data:{

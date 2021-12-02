@@ -49,13 +49,13 @@
     if (answerSheet.getUserAnswer().equals(answerSheet.getOptionAnswer())){
 %>
 <span style="color: green">√</span> 你的选项：<%=answerSheet.getUserAnswer()%>  答案：<%=answerSheet.getOptionAnswer()%>
-<a href="#">查看解题详情</a>
+<a href="getQuestionById.do?optionId=<%=question.getQuestion_id()%>&userAnswer=<%=answerSheet.getUserAnswer()%>">查看解题详情</a>
 <br>
 <%
     }else {
 %>
 <span style="color: red">×</span>你的选项：<%=answerSheet.getUserAnswer()%>  答案：<%=answerSheet.getOptionAnswer()%>
-<a href="#">查看解题详情</a>
+<a href="getQuestionById.do?optionId=<%=question.getQuestion_id()%>&userAnswer=<%=answerSheet.getUserAnswer()%>">查看解题详情</a>
 <br>
 <%
     }

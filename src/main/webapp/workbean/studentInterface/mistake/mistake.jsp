@@ -26,7 +26,7 @@
 <body>
 <div id="misTake-home">
     <table>
-    <tr style="background-color: cadetblue">
+    <tr style="background-color: deepskyblue">
         <td style="height: 60px">题目</td>
         <td style="height: 60px">A选项</td>
         <td style="height: 60px">B选项</td>
@@ -38,7 +38,7 @@
     <%
         for(MistakeVo mistakeVo:mistakeVoList){
     %>
-    <tr style="background-color: cadetblue">
+    <tr style="background-color: deepskyblue">
         <td><%=mistakeVo.getQuestion_topic()%></td>
         <td><%=mistakeVo.getQuestion_A()%></td>
         <td><%=mistakeVo.getQuestion_B()%></td>
