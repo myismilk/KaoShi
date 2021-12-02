@@ -1,6 +1,5 @@
 package com.wangkaiping;
 
-import com.wangkaiping.controller.MyController;
 import com.wangkaiping.service.StudentService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

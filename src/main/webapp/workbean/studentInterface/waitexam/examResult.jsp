@@ -33,7 +33,6 @@
     }else {
             $("#fraction").css("color","red");
         }
-
     })
 
 </script>
