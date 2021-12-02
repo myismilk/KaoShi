@@ -124,6 +124,10 @@ int index = 0;
 </script>
 <body>
 <form>
+    <div style="margin-bottom: 30px">
+        <input type="button" id="previous" value="上一题" style="">
+        <input type="button" id="next" value="下一题">
+    </div>
 <%
     for(Question question:questionList){
         index += 1;
@@ -148,8 +152,6 @@ int index = 0;
             <input style="margin-left: 40px;width: 15px;height: 15px" type="radio" name="" value="A"></span>C、<span id="optionC"></span>
             <input style="margin-left: 40px;width: 15px;height: 15px" type="radio" name="" value="A"></span> value="D">D、<span id="optionD"></span>
         </p>--%>
-        <input type="button" id="previous" value="上一题">
-        <input type="button" id="next" value="下一题">
     </div>
 
 
