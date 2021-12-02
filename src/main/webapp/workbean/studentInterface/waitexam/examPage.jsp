@@ -31,6 +31,22 @@ int index = 0;
 <script type="application/javascript" src="jQuery/jquery.js"></script>
 <script type="application/javascript">
     $(function (){
+        var exam = "";
+
+        $.ajax({
+            url:"studentInterface/getExam.do",
+            data:{
+
+
+            },
+            type:"get",
+            dataType:"json",
+            success:function (result) {
+                exam=result;
+            }
+        })
+
+
         $("#submitBtn").click(function (){
             /*$("input[name="+radioName+"]:checked").val()*/
             var param = ""

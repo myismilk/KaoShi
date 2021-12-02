@@ -13,6 +13,7 @@
 %>
 <%
     File file = new File("");
+    int index = 0;
 %>
 <html>
 <head>
@@ -21,17 +22,24 @@
 </head>
 <script type="application/javascript" src="jQuery/jquery.js"></script>
 <script type="text/javascript">
-
+    $(function () {
+        var data = [{id:1,name:"wangkaiping",address:"guangdong"},{id:2,name:"haha",address:"beijing"},{id:1,name:"hehexi",address:"shanghai"},]
+        var index = 0;
+        $("#btn").click(function () {
+            alert(data[index].name);
+            index = index + 1;
+        })
+    })
 
 </script>
-<body>
-<input type="file" name="file" id="file">
-
-<script>
+<%--<script>
     var file = document.querySelector('#file')
     file.onchange = function (){
         alert(file.value)
     }
-</script>
+</script>--%>
+<body>
+<input type="button"  id="btn" value="提交">
+
 </body>
 </html>

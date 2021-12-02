@@ -68,6 +68,11 @@ public class MyController {
         modelAndView.setViewName("workbean/studentInterface/waitexam/examPage");
         return modelAndView;
     }
+    /*@RequestMapping("/studentInterface/getExam.do")
+    public @ResponseBody List getExam(Integer id,HttpServletRequest request){
+        List<Question> questionList = studentServiceImpl.getExam(id);
+        return questionList;
+    }*/
 
     //判题方法
     @RequestMapping("/workbean/studentInterface/waitexam/scoring.do")
