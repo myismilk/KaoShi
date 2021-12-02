@@ -28,13 +28,20 @@
                     $("#num").html(data);
                 }
             })
+            //加载完窗口列表栏需默认显示点击的是第一行
+            $(".nav li a").eq(0).css("background","deepskyblue");
+            $(".nav li a").eq(0).css("font-size","26px");
 
+
+
+            //导航栏的点击效果
             $(".nav li").click(function (){
                 $(".nav li a").css("background","white");
+                $(".nav li a").css("font-size","20px");
                 var indexNum = $(".nav li").index(this);
                 $(".nav li a").eq(indexNum).css("background","deepskyblue");
+                $(".nav li a").eq(indexNum).css("font-size","26px");
             })
-
         })
 
     </script>
@@ -42,14 +49,14 @@
 </head>
 <body>
 <ul class="nav nav-pills nav-stacked" style="text-align: center;font-size: 20px;list-style: none;">
-    <li role="presentation"><a href="workbean/self/studentMessage.do" target="right" style="background: deepskyblue">个人中心</a></li>
-    <li role="presentation"><a href="kaoShiNotify.do" target="right">考试须知</a></li>
-    <li role="presentation"><a href="waitExam.do" target="right" style="position: relative">待考通知<span id="num" class="badge" style="position: absolute"></span></a></li>
-    <li role="presentation"><a href="#" target="right">考试记录</a></li>
-    <li role="presentation"><a href="workbean/studentInterface/mistake/mistake.do" target="right">错题回顾</a></li>
+    <li role="presentation"><a href="workbean/self/studentMessage.do" target="right"><span class="glyphicon glyphicon-user"></span>个人中心</a></li>
+    <li role="presentation"><a href="kaoShiNotify.do" target="right"><span class="glyphicon glyphicon-education"></span>考试须知</a></li>
+    <li role="presentation"><a href="waitExam.do" target="right" style="position: relative"><span class="glyphicon glyphicon-comment"></span>待考通知<span id="num" class="badge" style="position: absolute"></span></a></li>
+    <li role="presentation"><a href="#" target="right"><span class="glyphicon glyphicon-folder-open"></span>考试记录</a></li>
+    <li role="presentation"><a href="workbean/studentInterface/mistake/mistake.do" target="right"><span class="glyphicon glyphicon-eye-open"></span>错题回顾</a></li>
 </ul>
 
 
-
+<a style="font-size: "></a>
 </body>
 </html>
