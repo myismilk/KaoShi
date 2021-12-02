@@ -56,7 +56,5 @@
     <li role="presentation"><a href="workbean/studentInterface/mistake/mistake.do" target="right"><span class="glyphicon glyphicon-eye-open"></span>错题回顾</a></li>
 </ul>
 
-
-<a style="font-size: "></a>
 </body>
 </html>
