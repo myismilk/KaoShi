@@ -48,14 +48,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public String editEvaluation(Map<String, Object> map) {
-        String result = "";
+        boolean result = false;
         Integer num = studentDao.editEvaluation(map);
         if(num==1){
-            result = "修改成功";
-        }else {
-            result = "修改失败";
+           return "修改成功";
         }
-        return result;
+        return "修改失败";
     }
 
 

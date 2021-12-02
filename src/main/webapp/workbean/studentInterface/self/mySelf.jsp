@@ -36,8 +36,17 @@
 
         //个人评价的点击按钮
         $("#submit-Btn").click(function (){
-            var text = $("#evaluation").val();
-            if(confirm("确认要修改个人评价？")){
+            $("#selfModal").modal("show");
+        })
+
+
+        //模态窗口的提交按钮
+        $("#commitBtn").click(function () {
+            var text = $.trim($("#modalcontent").val());
+            if(text==""){
+                alert("请填写修改内容。");
+                return;
+            }
             $.ajax({
                 url:"workbean/studentInterface/self/editEvaluation.do",
                 data:{
@@ -47,10 +56,14 @@
                 type:"post",
                 dataType:"text",
                 success:function (result){
-                    alert(result)
+                    alert(result);
+                    if(result=="修改成功"){
+                        $("#evaluation").val(text);
+                        $("#modalcontent").val()
+                        $("#selfModal").modal("hide");
+                    }
                 }
             })
-            }
         })
 
     })
@@ -81,11 +94,31 @@
     </div>
     <div id="selfEvaluation">
         <div><label style="float: left;font-size: 25px" >自我评价：</label>
-            <input type="button" id="submit-Btn" class="btn btn-primary" style="float: right" value="提交自我评价"></input>
+            <input type="button" id="submit-Btn" class="btn btn-primary" style="float: right" value="修改自我评价"></input>
         </div>
         <textarea id="evaluation" class="form-control" rows="4">${student.student_evaluation}</textarea>
     </div>
-</div>
 
+    <%--修改个人评价的模态窗口--%>
+    <div class="modal fade" id="selfModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">修改个人评价窗口</h4>
+                </div>
+                <div class="modal-body" style="height: 200px;">
+                    <textarea id="modalcontent" placeholder="填写修改的信息......" style="font-size: 20px;height: 180px;width: 550px"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" id="commitBtn" class="btn btn-primary">提交修改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+</div>
 </body>
 </html>
