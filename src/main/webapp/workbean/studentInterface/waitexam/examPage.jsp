@@ -1,5 +1,6 @@
 <%@ page import="com.wangkaiping.domain.Question" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: 12345678
   Date: 2021/11/22
@@ -12,7 +13,7 @@
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%
-List<Question> questionList = (List<Question>) request.getAttribute("questionList");
+ArrayList<Question> questionList = (ArrayList<Question>) request.getAttribute("questionList");
 int index = 0;
 %>
 <html>
@@ -30,23 +31,25 @@ int index = 0;
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 <script type="application/javascript" src="jQuery/jquery.js"></script>
 <script type="application/javascript">
+    var topicNumber = 1;
+    //试卷的json对象
+    /*var exam = ;
+    topicNumber = 1;
+    $("#topicNumber").text(topicNumber)
+    $("#topic").text(exam[topicNumber].topic)
+    $("#optionA").text(exam[topicNumber].optionA)
+    $("#optionB").text(exam[topicNumber].optionB)
+    $("#optionC").text(exam[topicNumber].optionC)
+    $("#optionD").text(exam[topicNumber].optionD)*/
+    /*function next() {
+        topicNumber = topicNumber + 1;
+
+    }
+    function previous() {
+        topicNumber = topicNumber - 1;
+    }*/
     $(function (){
-        var exam = "";
-
-        $.ajax({
-            url:"studentInterface/getExam.do",
-            data:{
-
-
-            },
-            type:"get",
-            dataType:"json",
-            success:function (result) {
-                exam=result;
-            }
-        })
-
-
+        $("#"+topicNumber).show();
         $("#submitBtn").click(function (){
             /*$("input[name="+radioName+"]:checked").val()*/
             var param = ""
@@ -79,10 +82,45 @@ int index = 0;
                 }
             }
         })
+
+        $("#next").click(function () {
+            if(topicNumber==10){
+                return;
+            }
+            $("#"+topicNumber).hide();
+            topicNumber = topicNumber + 1;
+            $("#"+topicNumber).show();
+            //alert(exam[topicNumber].topic);
+            /*$("#topicNumber").text(topicNumber)
+            $("#topic").text(exam[topicNumber].topic)
+            $("#optionA").text(exam[topicNumber].optionA)
+            $("#optionB").text(exam[topicNumber].optionB)
+            $("#optionC").text(exam[topicNumber].optionC)
+            $("#optionD").text(exam[topicNumber].optionD)*/
+        })
+
+        $("#previous").click(function () {
+            if(topicNumber==1){
+                return;
+            }
+            $("#"+topicNumber).hide();
+            topicNumber = topicNumber - 1;
+            $("#"+topicNumber).show();
+            //alert(exam[topicNumber].topic);
+            /*$("#topicNumber").text(topicNumber)
+            $("#topic").text(exam[topicNumber].topic)
+            $("#optionA").text(exam[topicNumber].optionA)
+            $("#optionB").text(exam[topicNumber].optionB)
+            $("#optionC").text(exam[topicNumber].optionC)
+            $("#optionD").text(exam[topicNumber].optionD)*/
+        })
+
         window.onbeforeunload = function (event){
             event.returnValue = "退出数据不会保存，你确定要退出吗？";
         }
     })
+
+
 </script>
 <body>
 <form>
@@ -90,7 +128,7 @@ int index = 0;
     for(Question question:questionList){
         index += 1;
 %>
-<div class="list-group" style="margin-left: 20px">
+<div class="list-group" style="margin-left: 20px" id="<%=index%>" hidden>
         <h4 class="list-group-item-heading" style="margin-top: 20px">第<%=index%>题：<%=question.getQuestion_topic()%></h4>
         <p class="list-group-item-text" style="margin-top: 30px;margin-bottom: 60px;font-size: 15px">
             <input style="margin-left: 40px;width: 15px;height: 15px" type="radio" name="<%=question.getQuestion_id()%>" value="A">A、<%=question.getQuestion_A()%>
@@ -102,6 +140,19 @@ int index = 0;
 <%
     }
 %>
+    <div class="list-group" style="margin-left: 20px">
+        <%--<h4 class="list-group-item-heading" style="margin-top: 20px">第<span id="topicNumber">1</span>题：<span id="topic"></span></h4>
+        <p class="list-group-item-text" style="margin-top: 30px;margin-bottom: 60px;font-size: 15px">
+            <input style="margin-left: 40px;width: 15px;height: 15px" type="radio" name="" value="A">A、<span id="optionA"></span>
+            <input style="margin-left: 40px;width: 15px;height: 15px" type="radio" name="" value="A"></span>B、<span id="optionB"></span>
+            <input style="margin-left: 40px;width: 15px;height: 15px" type="radio" name="" value="A"></span>C、<span id="optionC"></span>
+            <input style="margin-left: 40px;width: 15px;height: 15px" type="radio" name="" value="A"></span> value="D">D、<span id="optionD"></span>
+        </p>--%>
+        <input type="button" id="previous" value="上一题">
+        <input type="button" id="next" value="下一题">
+    </div>
+
+
     <input id="submitBtn" style="width: 100px;height: 40px;border-radius: 5%;margin-left: 45%;margin-top: 40px" type="button" value="提交答卷">
 </form>
 </body>

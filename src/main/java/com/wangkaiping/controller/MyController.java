@@ -13,10 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @Controller
@@ -61,7 +58,7 @@ public class MyController {
     @RequestMapping("/studentInterface/getExam.do")
     public ModelAndView getExam(Integer id,HttpServletRequest request){
         ModelAndView modelAndView = new ModelAndView();
-        List<Question> questionList = studentServiceImpl.getExam(id);
+        ArrayList<Question> questionList = (ArrayList<Question>) studentServiceImpl.getExam(id);
         HttpSession session = request.getSession(false);
         session.setAttribute("questionList",questionList);
         modelAndView.addObject("questionList",questionList);
