@@ -8,6 +8,7 @@ public class Question {
     private String question_C;
     private String question_D;
     private String answer;
+    private String parsing;
     private Integer create_by;
 
     public Integer getQuestion_id() {
@@ -74,6 +75,14 @@ public class Question {
         this.create_by = create_by;
     }
 
+    public String getParsing() {
+        return parsing;
+    }
+
+    public void setParsing(String parsing) {
+        this.parsing = parsing;
+    }
+
     @Override
     public String toString() {
         return "Question{" +
@@ -84,6 +93,7 @@ public class Question {
                 ", question_C='" + question_C + '\'' +
                 ", question_D='" + question_D + '\'' +
                 ", answer='" + answer + '\'' +
+                ", parsing='" + parsing + '\'' +
                 ", create_by=" + create_by +
                 '}';
     }

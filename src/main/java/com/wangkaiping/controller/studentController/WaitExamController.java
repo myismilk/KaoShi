@@ -2,6 +2,7 @@ package com.wangkaiping.controller.studentController;
 
 import com.wangkaiping.domain.Question;
 import com.wangkaiping.service.StudentService;
+import com.wangkaiping.vo.AnswerSheet;
 import com.wangkaiping.vo.PaperVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,25 +26,43 @@ public class WaitExamController {
     @RequestMapping("/workbean/studentInterface/waitexam/scoring.do")
     public ModelAndView scoring(HttpServletRequest request){
         ModelAndView modelAndView = new ModelAndView();
-        Map<Integer,Boolean> resultMap = new HashMap<>();
+        //用来装判题时候用户某题的对错，进行算分
+        //修改：Map<Integer,Boolean> resultMap = new HashMap<>();
+        Map<Integer, AnswerSheet> answerSheetMap = new HashMap<>();
         int fraction = 0;
         HttpSession session = request.getSession(false);
         List<Question> questionList = (List<Question>) session.getAttribute("questionList");
         for (Question question:questionList) {
             String answer = request.getParameter(String.valueOf(question.getQuestion_id()));
+            if(answer.contains("null")){
+                answer = "未选择";
+            }
             if (answer.equals(question.getAnswer())){
+                /*//题目对了
                 resultMap.put(question.getQuestion_id(),true);
+                fraction += 10;*/
+
+                /*----------------------------修改*/
+                AnswerSheet answerSheet = new AnswerSheet();
+                answerSheet.setUserAnswer(answer);
+                answerSheet.setOptionAnswer(question.getAnswer());
+                answerSheetMap.put(question.getQuestion_id(),answerSheet);
                 fraction += 10;
             }else{
-                //这里进行错题操作
+                /*//这里进行错题操作
                 resultMap.put(question.getQuestion_id(),false);
+                //将数据库添加错题 mistake*/
 
-                //将数据库添加错题 mistake
+                /*----------------------------修改*/
+                AnswerSheet answerSheet = new AnswerSheet();
+                answerSheet.setUserAnswer(answer);
+                answerSheet.setOptionAnswer(question.getAnswer());
+                answerSheetMap.put(question.getQuestion_id(),answerSheet);
 
             }
         }
         modelAndView.addObject("fraction",fraction);
-        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("answerSheetMap",answerSheetMap);
         modelAndView.setViewName("workbean/studentInterface/waitexam/examResult");
         return modelAndView;
     }
