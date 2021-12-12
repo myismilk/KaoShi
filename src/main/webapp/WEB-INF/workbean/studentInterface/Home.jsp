@@ -11,9 +11,9 @@
     </title>
 </head>
 <frameset rows="20%,85%">
-    <frame src="workbean/studentInterface/top.jsp" name="top">
+    <frame src="top" name="top">
     <frameset cols="15%,85%">
-        <frame src="workbean/studentInterface/left.jsp" name="left">
+        <frame src="left" name="left">
         <frame src="workbean/self/studentMessage.do" name="right">
     </frameset>
 

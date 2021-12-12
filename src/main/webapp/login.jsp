@@ -14,7 +14,7 @@
 <body>
 <div id="LoginBackage">
 <div id="loginDiv">
-    <form action="workbean/studentInterface/Home.jsp" id="form">
+    <form action="login" id="form">
         <h1 style="text-align: center;color: pink;">欢迎来到****考试管理系统</h1>
         <div style="text-align: center;margin-top: 30px;">
             <p><span class="p1">用户名</span><input id="userNname" type="text" name="userName"><label id="name_trip"></label></p>

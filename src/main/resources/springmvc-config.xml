@@ -16,10 +16,10 @@
     </context:component-scan>-->
     <!--开启注解驱动-->
     <mvc:annotation-driven/>
-
+    <mvc:default-servlet-handler/>
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/"/>
+        <property name="prefix" value="/WEB-INF/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
     <!--拦截器-->

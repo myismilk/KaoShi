@@ -49,7 +49,6 @@ public class MyController {
     //查看详情
     @RequestMapping("/getQuestionById.do")
     public ModelAndView getOption(Integer questionId,String userAnswer){
-        System.out.println("进入到了getQuestionById.do");
         System.out.println(userAnswer);
         ModelAndView modelAndView = new ModelAndView();
         Question question = questionServiceImpl.getQuestionById(questionId);
@@ -67,5 +66,18 @@ public class MyController {
     @RequestMapping("/waitExam.do")
     public String waitExam(){
         return "workbean/studentInterface/waitexam/examhome";
+    }
+
+
+    //登录到学生界面的时的上方frame
+    @RequestMapping("/top")
+    public String studentTopInterface(){
+        return "workbean/studentInterface/top";
+    }
+
+    //登录到学生界面的时的左方frame
+    @RequestMapping("/left")
+    public String studentLeftInterface(){
+        return "workbean/studentInterface/left";
     }
 }
