@@ -19,6 +19,7 @@
 <head>
     <base href="<%=basePath%>">
     <title>Title</title>
+<link rel="stylesheet" href="font-awsome/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <script type="application/javascript" src="jQuery/jquery.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -46,28 +47,15 @@
         alert(file.value)
     }
 </script>--%>
+
+<i class="fa fa-address-book" aria-hidden="true"></i>
 <body>
 
 <form>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputFile">File input</label>
-        <input type="file" id="exampleInputFile">
-        <p class="help-block">Example block-level help text here.</p>
-    </div>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox"> Check me out
-        </label>
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+
+
+
+
 </form>
 </body>
 </html>

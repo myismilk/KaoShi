@@ -6,7 +6,7 @@
 <html>
 <head>
     <base href="<%=basePath%>">
-    <title>Title</title>
+    <title>考试管理系统</title>
     <link rel="stylesheet" type="text/css" href="css/studentInterface/mySelf.css">
 </head>
 <script type="application/javascript" src="jQuery/jquery.js"></script>
@@ -82,7 +82,7 @@
     <div>
 
     <div id="photo">
-        <div id="edit-photo" style="position: absolute;background:rgba(255,255,255,0.5);text-align: center;width: 245px;height:40px;line-height:40px;display: none">
+        <div id="edit-photo" style="position: absolute;background:rgba(255,255,255,0.8);text-align: center;width: 245px;height:40px;line-height:40px;display: none">
             <a href="javascript:void(0)" id="edit-photoBtn">点击修改头像</a>
         </div>
         <%--修改个人头像的模态窗口--%>
@@ -101,10 +101,9 @@
                             </div>
                         </form>
                     </div>
-
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+                </div>
+            </div>
+        </div>
         <img src="userImg/${student.student_img}" style="width: 100%;height: 100%">
     </div>
     <div id="detailed">

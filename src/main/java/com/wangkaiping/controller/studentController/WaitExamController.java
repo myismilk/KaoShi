@@ -1,6 +1,9 @@
 package com.wangkaiping.controller.studentController;
 
+import com.wangkaiping.domain.Comment;
 import com.wangkaiping.domain.Question;
+import com.wangkaiping.service.CommentService;
+import com.wangkaiping.service.QuestionService;
 import com.wangkaiping.service.StudentService;
 import com.wangkaiping.vo.AnswerSheet;
 import com.wangkaiping.vo.PaperVo;
@@ -21,6 +24,10 @@ import java.util.Map;
 public class WaitExamController {
     @Autowired
     private StudentService studentServiceImpl;
+    @Autowired
+    private QuestionService questionServiceImpl;
+    @Autowired
+    private CommentService CommentServiceImpl;
 
     //判题方法
     @RequestMapping("/workbean/studentInterface/waitexam/scoring.do")
@@ -84,6 +91,20 @@ public class WaitExamController {
         session.setAttribute("questionList",questionList);
         modelAndView.addObject("questionList",questionList);
         modelAndView.setViewName("workbean/studentInterface/waitexam/examPage");
+        return modelAndView;
+    }
+
+    //获取试题的详情
+    public ModelAndView getQuestionDetails(Integer questionId,String userAnswer){
+        ModelAndView modelAndView = new ModelAndView();
+        //获取question用于展示题目，和用户的选项。
+        Question question = questionServiceImpl.getQuestionById(questionId);
+        modelAndView.addObject("question",question);
+        modelAndView.addObject("userAnswer",userAnswer);
+        //获取改问题的相关所有评论
+        List<Comment> commentList = CommentServiceImpl.getCommentListByQuestionId(questionId);
+        modelAndView.addObject("commentList",commentList);
+       // modelAndView.setViewName("");
         return modelAndView;
     }
 }

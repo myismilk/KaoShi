@@ -10,6 +10,7 @@
     <base href="<%=basePath%>">
     <title>考试系统登录界面</title>
     <link rel="stylesheet" type="text/css" href="css/Login.css">
+    <link rel="stylesheet" href="font-awsome/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div id="LoginBackage">
@@ -27,5 +28,8 @@
     </form>
 </div>
 </div>
+
+
+
 </body>
 </html>

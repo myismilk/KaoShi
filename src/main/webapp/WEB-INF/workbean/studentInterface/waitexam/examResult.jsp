@@ -27,6 +27,14 @@
     <title>Title</title>
 </head>
 <script type="application/javascript" src="jQuery/jquery.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 <script type="application/javascript">
     $(function (){
         if (80 <= <%=fraction%>){
@@ -45,18 +53,22 @@
     for(Question question:questionList){
         AnswerSheet answerSheet = answerSheetMap.get(question.getQuestion_id());
 %>
+<div style="margin-top: 50px">
+<div style="float: left;width: 450px">
 第<%=i%>题：<%
     if (answerSheet.getUserAnswer().equals(answerSheet.getOptionAnswer())){
 %>
-<span style="color: green">√</span> 你的选项：<%=answerSheet.getUserAnswer()%>  答案：<%=answerSheet.getOptionAnswer()%>
-<a href="getQuestionById.do?optionId=<%=question.getQuestion_id()%>&userAnswer=<%=answerSheet.getUserAnswer()%>">查看解题详情</a>
-<br>
+<span style="color: green;font-size: 30px">√</span> 你的选项：<%=answerSheet.getUserAnswer()%>  答案：<%=answerSheet.getOptionAnswer()%>
+</div>
+<a class="btn btn-default" style="color: darkseagreen" href="getQuestionById.do?questionId=<%=question.getQuestion_id()%>&userAnswer=<%=answerSheet.getUserAnswer()%>">查看题目解析</a>
+</div>
 <%
     }else {
 %>
-<span style="color: red">×</span>你的选项：<%=answerSheet.getUserAnswer()%>  答案：<%=answerSheet.getOptionAnswer()%>
-<a href="getQuestionById.do?optionId=<%=question.getQuestion_id()%>&userAnswer=<%=answerSheet.getUserAnswer()%>">查看解题详情</a>
-<br>
+<span style="color: red;font-size: 30px">×</span>你的选项：<%=answerSheet.getUserAnswer()%>  答案：<%=answerSheet.getOptionAnswer()%>
+</div>
+<a class="btn btn-default" style="color: darkseagreen" href="getQuestionById.do?questionId=<%=question.getQuestion_id()%>&userAnswer=<%=answerSheet.getUserAnswer()%>">查看题目解析</a>
+</div>
 <%
     }
 %>

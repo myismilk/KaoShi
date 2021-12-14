@@ -7,9 +7,10 @@
 <html>
 <head>
     <base href="<%=basePath%>">
-    <title>
-    </title>
+    <title>考试管理系统</title>
+    <link rel="icon" href="image/icon/favicon.ico">
 </head>
+
 <frameset rows="20%,85%">
     <frame src="top" name="top">
     <frameset cols="15%,85%">
