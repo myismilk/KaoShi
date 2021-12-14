@@ -20,7 +20,7 @@
 <script type="application/javascript">
     $(function (){
 
-        /*//点击修改头像的按钮
+        //点击修改头像的按钮
 
 
 
@@ -31,7 +31,13 @@
         //移开鼠标隐藏修改头像按钮
         $("#photo").mouseout(function (){
             $("#edit-photo").hide();
-        })*/
+        })
+
+        //修改头像按钮
+        $("#edit-photoBtn").click(function () {
+            $("#edit-photoModal").modal("show");
+
+        })
 
 
         //个人评价的点击按钮
@@ -77,9 +83,29 @@
 
     <div id="photo">
         <div id="edit-photo" style="position: absolute;background:rgba(255,255,255,0.5);text-align: center;width: 245px;height:40px;line-height:40px;display: none">
-            点击修改头像
+            <a href="javascript:void(0)" id="edit-photoBtn">点击修改头像</a>
         </div>
-        <img src="image/studentInterface/studentImg/${student.student_img}" style="width: 100%;height: 100%">
+        <%--修改个人头像的模态窗口--%>
+        <div class="modal fade" id="edit-photoModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">修改头像</h4>
+                        <form action="workbean/studentInterface/self/editPhoto" method="post" enctype="multipart/form-data">
+                            <input value="${student.student_id}" name="studentId" hidden>
+                            <input type="file" name="photoFile">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                <button type="submit" class="btn btn-primary">提交修改</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <img src="userImg/${student.student_img}" style="width: 100%;height: 100%">
     </div>
     <div id="detailed">
                 <ul class="list-group" style="list-style: none;font-size: 20px;">

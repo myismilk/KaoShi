@@ -20,4 +20,6 @@ public interface StudentService {
     List<MistakeVo> getMisTake(int i);
 
     String editEvaluation(Map<String, Object> map);
+
+    Integer editPhoto(Map<String,String> map);
 }

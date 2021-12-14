@@ -20,4 +20,6 @@ public interface StudentDao {
     List<MistakeVo> getMisTake(Integer studentId);
 
     Integer editEvaluation(Map<String, Object> map);
+
+    Integer editPhoto(Map<String,String> map);
 }

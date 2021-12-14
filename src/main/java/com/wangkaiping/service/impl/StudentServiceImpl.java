@@ -56,5 +56,10 @@ public class StudentServiceImpl implements StudentService {
         return "修改失败";
     }
 
+    @Override
+    public Integer editPhoto(Map<String,String> map) {
+        return studentDao.editPhoto(map);
+    }
+
 
 }

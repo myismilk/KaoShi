@@ -70,4 +70,9 @@ select * from tbl_student where student_id=#{studentId}
     <update id="editEvaluation">
         update tbl_student set student_evaluation=#{context} where student_id=#{studentId}
     </update>
+
+    <!--修改用户的头像-->
+    <update id="editPhoto" parameterType="Map">
+        update tbl_student set student_img=#{url} where student_id=#{studentId}
+    </update>
 </mapper>
