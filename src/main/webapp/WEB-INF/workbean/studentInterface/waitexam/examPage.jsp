@@ -173,7 +173,7 @@ int index = 0;
     for(Question question:questionList){
         index += 1;
 %>
-<div class="list-group" style="margin-left: 20px" id="<%=index%>" hidden>
+    <div class="list-group" style="margin-left: 20px" id="<%=index%>" hidden>
         <h4 class="list-group-item-heading" style="margin-top: 20px"><p class="text-primary">第<%=index%>题：<%=question.getQuestion_topic()%></p>
         <p class="list-group-item-text" style="margin-top: 30px;margin-bottom: 60px;font-size: 15px">
             <input style="margin-left: 40px;margin-bottom: 20px;width: 15px;height: 15px" type="radio" name="<%=question.getQuestion_id()%>" value="A">A、<%=question.getQuestion_A()%><br/>
@@ -181,7 +181,8 @@ int index = 0;
             <input style="margin-left: 40px;margin-bottom: 20px;width: 15px;height: 15px" type="radio" name="<%=question.getQuestion_id()%>"value="C">C、<%=question.getQuestion_C()%><br/>
             <input style="margin-left: 40px;margin-bottom: 20px;width: 15px;height: 15px" type="radio" name="<%=question.getQuestion_id()%>" value="D">D、<%=question.getQuestion_D()%>
         </p>
-</div>
+    </div>    
+
 <%
     }
 %>

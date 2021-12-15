@@ -6,6 +6,7 @@ import com.wangkaiping.service.CommentService;
 import com.wangkaiping.service.QuestionService;
 import com.wangkaiping.service.StudentService;
 import com.wangkaiping.vo.AnswerSheet;
+import com.wangkaiping.vo.CommentVo;
 import com.wangkaiping.vo.PaperVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -95,16 +96,24 @@ public class WaitExamController {
     }
 
     //获取试题的详情
+    @RequestMapping("/workbean/studentInterface/waitexam/getQuestionDetails")
     public ModelAndView getQuestionDetails(Integer questionId,String userAnswer){
         ModelAndView modelAndView = new ModelAndView();
         //获取question用于展示题目，和用户的选项。
         Question question = questionServiceImpl.getQuestionById(questionId);
         modelAndView.addObject("question",question);
         modelAndView.addObject("userAnswer",userAnswer);
-        //获取改问题的相关所有评论
-        List<Comment> commentList = CommentServiceImpl.getCommentListByQuestionId(questionId);
-        modelAndView.addObject("commentList",commentList);
-       // modelAndView.setViewName("");
+        //获取该题目的相关所有评论
+        List<CommentVo> commentVoList = CommentServiceImpl.getCommentListByQuestionId(questionId);
+        for(CommentVo commentVo:commentVoList){
+            System.out.println(commentVo);
+        }
+        modelAndView.addObject("commentVoList",commentVoList);
+       // 跳转
+        modelAndView.setViewName("workbean/studentInterface/waitexam/questionParsing");
         return modelAndView;
     }
+
+
+
 }

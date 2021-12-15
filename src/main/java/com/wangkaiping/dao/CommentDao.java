@@ -1,9 +1,9 @@
 package com.wangkaiping.dao;
 
-import com.wangkaiping.domain.Comment;
+import com.wangkaiping.vo.CommentVo;
 
 import java.util.List;
 
 public interface CommentDao {
-    List<Comment> getCommentListByQuestionId(Integer questionId);
+    List<CommentVo> getCommentListByQuestionId(Integer questionId);
 }

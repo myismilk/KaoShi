@@ -60,14 +60,14 @@
 %>
 <span style="color: green;font-size: 30px">√</span> 你的选项：<%=answerSheet.getUserAnswer()%>  答案：<%=answerSheet.getOptionAnswer()%>
 </div>
-<a class="btn btn-default" style="color: darkseagreen" href="getQuestionById.do?questionId=<%=question.getQuestion_id()%>&userAnswer=<%=answerSheet.getUserAnswer()%>">查看题目解析</a>
+<a class="btn btn-default" style="color: darkseagreen" href="workbean/studentInterface/waitexam/getQuestionDetails?questionId=<%=question.getQuestion_id()%>&userAnswer=<%=answerSheet.getUserAnswer()%>">查看题目解析</a>
 </div>
 <%
     }else {
 %>
 <span style="color: red;font-size: 30px">×</span>你的选项：<%=answerSheet.getUserAnswer()%>  答案：<%=answerSheet.getOptionAnswer()%>
 </div>
-<a class="btn btn-default" style="color: darkseagreen" href="getQuestionById.do?questionId=<%=question.getQuestion_id()%>&userAnswer=<%=answerSheet.getUserAnswer()%>">查看题目解析</a>
+<a class="btn btn-default" style="color: darkseagreen" href="workbean/studentInterface/waitexam/getQuestionDetails?questionId=<%=question.getQuestion_id()%>&userAnswer=<%=answerSheet.getUserAnswer()%>">查看题目解析</a>
 </div>
 <%
     }
