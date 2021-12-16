@@ -14,7 +14,7 @@ import java.util.*;
 
 
 @Controller
-public class MyController {
+public class StudentOtherController {
     @Autowired
     private StudentService studentServiceImpl;
     @Autowired
