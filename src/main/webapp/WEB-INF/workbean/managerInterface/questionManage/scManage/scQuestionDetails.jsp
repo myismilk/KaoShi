@@ -1,10 +1,13 @@
 ﻿<%@ page import="com.wangkaiping.domain.Manage" %>
+<%@ page import="com.wangkaiping.domain.Question" %>
+<%@ page import="java.util.List" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%
     Manage user = (Manage) request.getSession(false).getAttribute("user");
+    List<Question> questionList = (List<Question>) request.getAttribute("questionList");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,24 +40,14 @@
         <div class="applogo">
             <a href="javascript:void(0)" class="logo">考试系统</a>
         </div>
-        <!-- End App Logo -->
-        <!-- Start Sidebar Show Hide Button -->
         <a href="javascript:void(0)" class="sidebar-open-button"><i class="fa fa-bars"></i></a>
         <a href="javascript:void(0)" class="sidebar-open-button-mobile"><i class="fa fa-bars"></i></a>
-        <!-- End Sidebar Show Hide Button -->
-        <!-- Start Sidepanel Show-Hide Button -->
         <a href="#sidepanel" class="sidepanel-open-button"><i class="fa fa-outdent"></i></a>
-        <!-- End Sidepanel Show-Hide Button -->
-        <!-- Start Top Right -->
         <ul class="top-right">
             <li class="dropdown link">
                 <a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle profilebox"><img src="Content/Images/test/user.png" /><b><%=user.getManage_username()%></b><span class="caret"></span></a>
                 <ul class="dropdown-menu dropdown-menu-list dropdown-menu-right">
-                    <%--<li><a href="javascript:void(0)"><i class="fa falist fa-inbox"></i>收信</a></li>
-                    <li><a href="javascript:void(0)"><i class="fa falist fa-file-o"></i>记事本</a></li>--%>
                     <li><a href="javascript:void(0)"><i class="fa falist fa-wrench"></i>设置</a></li>
-                    <%--<li class="divider"></li>
-                    <li><a href="javascript:void(0)"><i class="fa falist fa-lock"></i> 锁屏</a></li>--%>
                     <li><a href="javascript:void(0)"><i class="fa falist fa-power-off"></i> 退出</a></li>
                 </ul>
             </li>
@@ -81,21 +74,12 @@
                 </ul>
             </li>
 
-            <%--<li>
-                <a href="javascript:void(0)"><span class="icon color9"><i class="fa fa-th"></i></span>课程管理<span class="caret"></span></a>
-                <ul>
-                    <li><a href="javascript:void(0)">新增课程</a></li>
-                    <li><a href="javascript:void(0)">课程管理</a></li>
-                    <li><a href="javascript:void(0)"> 章节管理</a></li>
-                </ul>
-            </li>--%>
             <li>
                 <a href="javascript:void(0)"><span class="icon color14"><i class="fa fa-book"></i></span>题库管理<span class="caret"></span></a>
                 <ul>
                     <li><a href="toScManage">单选试题管理</a></li>
                     <li><a href="javascript:void(0)">多选试题管理</a></li>
                     <li><a href="javascript:void(0)">判断试题管理</a></li>
-                    <%--<li><a href="javascript:void(0)">审核试题管理<span class="label label-danger">NEW</span></a></li>--%>
                 </ul>
             </li>
             <li>
@@ -108,10 +92,6 @@
             </li>
 
             <li><a href="Test_paper.html"><span class="icon color11"><i class="fa fa-file-text-o"></i></span>试卷管理</a></li>
-            <%--<li><a href="Supervise.html"><span class="icon color8"><i class="fa fa-github-alt"></i></span>监考管理</a></li>
-            <li><a href="Grade.html"><span class="icon color8"><i class="fa fa-calendar-o"></i></span>成绩管理</a></li>
-            <li><a href="Practice_test.html"><span class="icon color6"><i class="fa fa-star"></i></span>模拟考试</a></li>
-            <li><a href="System.html"><span class="icon color5"><i class="fa fa-home"></i></span>系统管理</a></li>--%>
             <li><a href="javascript:void(0)"><span class="icon color12"><i class="fa fa-power-off"></i></span>退出系统</a></li>
         </ul>
     </div>
@@ -121,8 +101,7 @@
         <div class="page-header">
             <h1 class="title">题库管理</h1>
             <ol class="breadcrumb">
-                <li><a href="index.html">题库管理</a></li>
-                <li class="active">试题管理</li>
+                <li class="active">单选题管理</li>
             </ol>
         </div>
 
@@ -240,59 +219,34 @@
                                 <thead>
                                     <tr>
                                         <th>试题编号</th>
-                                        <th>题目</th>
                                         <th>题型</th>
-                                        <th>题源</th>
-                                        <th>考试类别</th>
-                                        <th>篇章节</th>
-                                        <th>适应层次</th>
-                                        <th>难度</th>
-                                        <th>要求度</th>
-                                        <th>认知分类</th>
-                                        <th>审核</th>
-                                        <th>最近编辑时间</th>
+                                        <th>题目</th>
+                                        <th>创建时间</th>
+                                        <th>修改人</th>
+                                        <th>创建人</th>
                                         <th>编辑</th>
                                     </tr>
                                 </thead>
 
-                                <tfoot>
-                                    <tr>
-                                        <th>试题编号</th>
-                                        <th>题目</th>
-                                        <th>题型</th>
-                                        <th>题源</th>
-                                        <th>考试类别</th>
-                                        <th>篇章节</th>
-                                        <th>适应层次</th>
-                                        <th>难度</th>
-                                        <th>要求度</th>
-                                        <th>认知分类</th>
-                                        <th>审核</th>
-                                        <th>最近编辑时间</th>
-                                        <th>编辑</th>
-                                    </tr>
-                                </tfoot>
-
                                 <tbody>
+                                <%for(Question question:questionList) {
+                                %>
                                     <tr>
                                         <td class="text-center">1</td>
-                                        <td>题目描述</td>
-                                        <td>A1型题</td>
-                                        <td>自编</td>
-                                        <td>期末考试</td>
-                                        <td>1121/111/212</td>
-                                        <td>本科生</td>
-                                        <td>中等</td>
-                                        <td>解释</td>
-                                        <td>记忆</td>
-                                        <td><i class="fa fa-times"></i></td>
-                                        <td>2011/04/25</td>
+                                        <th><%=question.getQuestion_type()%></th>
+                                        <th><%=question.getQuestion_topic()%></th>
+                                        <th><%=question.getCreate_time()%></th>
+                                        <th><%=question.getEdit_time()%></th>
+                                        <th><%=question.getCreate_by()%></th>
                                         <td>
                                             <a href="javascript:void(0)" class="btn btn-info"><i class="fa fa-edit"></i>编辑试题 </a>
                                             <a href="javascript:void(0)" class="btn btn-info"><i class="fa fa-trash"></i>删除试题 </a>
                                             <a href="Test_Info.html" class="btn btn-info"><i class="fa fa-file-text-o"></i>查看详情</a>
                                         </td>
                                     </tr>
+                                <%
+                                    }
+                                %>
                                 </tbody>
                             </table>
 
@@ -317,10 +271,6 @@
 
 
     </div>
-    <!-- End Content -->
-    <!-- //////////////////////////////////////////////////////////////////////////// -->
-    <!-- //////////////////////////////////////////////////////////////////////////// -->
-    <!-- START SIDEPANEL -->
     <div role="tabpanel" class="sidepanel">
 
         <!-- Nav tabs -->
@@ -463,35 +413,11 @@
         </div>
 
     </div>
-    <!-- END SIDEPANEL -->
-    <!-- //////////////////////////////////////////////////////////////////////////// -->
-    <!-- ================================================
-    jQuery Library
-    ================================================ -->
     <script src="Content/Common/jquery-1.11.1/jquery.min.js" type="text/javascript"></script>
-
-    <!-- ================================================
-    Bootstrap Core JavaScript File
-    ================================================ -->
     <script src="Content/Common/bootstrap-3.3.2-dist/js/bootstrap.min.js" type="text/javascript"></script>
-
-    <!-- ================================================
-    Plugin.js - Some Specific JS codes for Plugin Settings
-    ================================================ -->
     <script src="Content/Scripts/plugins.js" type="text/javascript"></script>
-
-    <!-- ================================================
-    Bootstrap Select
-    ================================================ -->
     <script type="text/javascript" src="Content/Common/Scripts/bootstrap-select/bootstrap-select.js"></script>
-
-    <!-- ================================================
-    Bootstrap Toggle
-    ================================================ -->
     <script type="text/javascript" src="Content/Common/Scripts/bootstrap-toggle/bootstrap-toggle.min.js"></script>
-
-
-    <!--特有，一定要放在Basic Date Range Picker前才有效-->
     <script src="Content/Common/Scripts/datatables/datatables.min.js" type="text/javascript"></script>
 
     <script>
