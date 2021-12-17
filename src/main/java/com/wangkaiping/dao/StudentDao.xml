@@ -57,6 +57,11 @@ select * from tbl_student where student_id=#{studentId}
         select * from tbl_question where question_id in (SELECT question_id from `paper-question` where paper_id=#{id})
     </select>
 
+    <!--用户登录用户是否存在-->
+    <select id="studentLogin" parameterType="Map" resultType="com.wangkaiping.domain.Student">
+        select * from tbl_student where student_username=#{username} and student_password=#{password}
+    </select>
+
     <!--获取用户的错题-->
     <select id="getMisTake" parameterType="java.lang.Integer" resultType="com.wangkaiping.vo.MistakeVo">
         select mistake_id as mistakeId,tbl_question.question_topic,tbl_question.question_A,tbl_question.question_B,tbl_question.question_C,tbl_question.question_D,tbl_question.answer

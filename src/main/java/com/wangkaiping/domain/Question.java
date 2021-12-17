@@ -2,6 +2,7 @@ package com.wangkaiping.domain;
 
 public class Question {
     private Integer question_id;
+    private String question_type;
     private String question_topic;
     private String question_A;
     private String question_B;
@@ -9,7 +10,9 @@ public class Question {
     private String question_D;
     private String answer;
     private String parsing;
-    private Integer create_by;
+    private String create_time;
+    private String edit_time;
+    private String create_by;
 
     public Integer getQuestion_id() {
         return question_id;
@@ -17,6 +20,14 @@ public class Question {
 
     public void setQuestion_id(Integer question_id) {
         this.question_id = question_id;
+    }
+
+    public String getQuestion_type() {
+        return question_type;
+    }
+
+    public void setQuestion_type(String question_type) {
+        this.question_type = question_type;
     }
 
     public String getQuestion_topic() {
@@ -67,14 +78,6 @@ public class Question {
         this.answer = answer;
     }
 
-    public Integer getCreate_by() {
-        return create_by;
-    }
-
-    public void setCreate_by(Integer create_by) {
-        this.create_by = create_by;
-    }
-
     public String getParsing() {
         return parsing;
     }
@@ -83,10 +86,35 @@ public class Question {
         this.parsing = parsing;
     }
 
+    public String getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(String create_time) {
+        this.create_time = create_time;
+    }
+
+    public String getEdit_time() {
+        return edit_time;
+    }
+
+    public void setEdit_time(String edit_time) {
+        this.edit_time = edit_time;
+    }
+
+    public String getCreate_by() {
+        return create_by;
+    }
+
+    public void setCreate_by(String create_by) {
+        this.create_by = create_by;
+    }
+
     @Override
     public String toString() {
         return "Question{" +
                 "question_id=" + question_id +
+                ", question_type=" + question_type +
                 ", question_topic='" + question_topic + '\'' +
                 ", question_A='" + question_A + '\'' +
                 ", question_B='" + question_B + '\'' +
@@ -94,6 +122,8 @@ public class Question {
                 ", question_D='" + question_D + '\'' +
                 ", answer='" + answer + '\'' +
                 ", parsing='" + parsing + '\'' +
+                ", create_time='" + create_time + '\'' +
+                ", edit_time='" + edit_time + '\'' +
                 ", create_by=" + create_by +
                 '}';
     }

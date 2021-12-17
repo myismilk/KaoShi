@@ -22,4 +22,6 @@ public interface StudentService {
     String editEvaluation(Map<String, Object> map);
 
     Integer editPhoto(Map<String,String> map);
+
+    Map<String, String> studentLogin(Map<String, String> map);
 }

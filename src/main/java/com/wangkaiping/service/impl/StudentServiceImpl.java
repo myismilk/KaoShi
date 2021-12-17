@@ -61,5 +61,11 @@ public class StudentServiceImpl implements StudentService {
         return studentDao.editPhoto(map);
     }
 
+    //管理员登录验证
+    @Override
+    public Map<String, String> studentLogin(Map<String, String> map) {
+        return studentDao.studentLogin(map);
+    }
+
 
 }
