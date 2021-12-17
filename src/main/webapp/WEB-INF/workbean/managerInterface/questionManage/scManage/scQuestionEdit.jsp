@@ -1,6 +1,6 @@
 ﻿<%@ page import="com.wangkaiping.domain.Manage" %>
 <%@ page import="com.wangkaiping.domain.Question" %>
-<%@ page import="java.util.List" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -117,36 +117,30 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-title">
-                            试题详情
+                            试题修改：直接修改文本内容可提交修改
                         </div>
                         <div class="panel-body table-responsive">
+                            <form action="toEditQuestion" method="post">
                             <div class="form-group">
                                 <label class="form-label">试题编号：</label>
-                                <input type="text" class="form-control" value="<%=question.getQuestion_id()%>" readonly>
-                                <label class="form-label">试题类型：</label>
-                                <input type="text" class="form-control" value="<%=question.getQuestion_type()%>" readonly>
+                                <input type="text" name="question_id" class="form-control" value="<%=question.getQuestion_id()%>" readonly>
                                 <label class="form-label">试题题目：</label>
-                                <input type="text" class="form-control" value="<%=question.getQuestion_topic()%>" readonly>
+                                <input type="text" name="question_topic" class="form-control" value="<%=question.getQuestion_topic()%>">
                                 <label class="form-label">A选项：</label>
-                                <input type="text" class="form-control" value="<%=question.getQuestion_A()%>" readonly>
+                                <input type="text" name="question_A" class="form-control" value="<%=question.getQuestion_A()%>">
                                 <label class="form-label">B选项：</label>
-                                <input type="text" class="form-control" value="<%=question.getQuestion_B()%>" readonly>
+                                <input type="text" name="question_B" class="form-control" value="<%=question.getQuestion_B()%>">
                                 <label class="form-label">C选项：</label>
-                                <input type="text" class="form-control" value="<%=question.getQuestion_C()%>" readonly>
+                                <input type="text" name="question_C" class="form-control" value="<%=question.getQuestion_C()%>">
                                 <label class="form-label">D选项：</label>
-                                <input type="text" class="form-control" value="<%=question.getQuestion_D()%>" readonly>
+                                <input type="text" name="question_D" class="form-control" value="<%=question.getQuestion_D()%>">
                                 <label class="form-label">试题答案：</label>
-                                <input type="text" class="form-control" value="<%=question.getAnswer()%>" readonly>
+                                <input type="text" name="answer" class="form-control" value="<%=question.getAnswer()%>">
                                 <label class="form-label">试题解析：</label>
-                                <input type="text" class="form-control" value="<%=question.getParsing()%>" readonly>
-                                <label class="form-label">创建时间：</label>
-                                <input type="text" class="form-control" value="<%=question.getCreate_time()%>" readonly>
-                                <label class="form-label">修改时间：</label>
-                                <input type="text" class="form-control" value="<%=question.getEdit_time()%>" readonly>
-                                <label class="form-label">创建人：</label>
-                                <input type="text" class="form-control" value="<%=question.getCreate_by()%>" readonly>
+                                <input type="text" name="parsing" class="form-control" value="<%=question.getParsing()%>">
                             </div>
-
+                            <button type="submit" class="btn btn-info" id="editCommitBtn"><i class="fa fa-edit"></i></i>提交试题修改 </button>
+                            </form>
                         </div>
 
                     </div>

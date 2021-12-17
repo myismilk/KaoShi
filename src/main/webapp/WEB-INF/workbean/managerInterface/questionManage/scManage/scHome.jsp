@@ -267,9 +267,9 @@
                                         <th><%=question.getEdit_time()%></th>
                                         <th><%=question.getCreate_by()%></th>
                                         <td>
-                                            <a href="javascript:void(0)" class="btn btn-info"><i class="fa fa-edit"></i>编辑试题 </a>
+                                            <a href="toQuestionEdit?questionId=<%=question.getQuestion_id()%>" class="btn btn-info"><i class="fa fa-edit"></i>编辑试题 </a>
                                             <a href="javascript:void(0)" class="btn btn-info"><i class="fa fa-trash"></i>删除试题 </a>
-                                            <a href="Test_Info.html" class="btn btn-info"><i class="fa fa-file-text-o"></i>查看详情</a>
+                                            <a href="getQuestionDetailsById?questionId=<%=question.getQuestion_id()%>" class="btn btn-info"><i class="fa fa-file-text-o"></i>查看详情</a>
                                         </td>
                                     </tr>
                                 <%
