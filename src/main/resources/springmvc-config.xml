@@ -27,6 +27,9 @@
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <mvc:mapping path="/workbean/**"/>
+            <mvc:exclude-mapping path="/login"/>
+            <mvc:exclude-mapping path="/managerLogin"/>
+            <mvc:exclude-mapping path="/managerLoginVerify"/>
             <bean class="com.wangkaiping.interceptors.OneInterceptors"/>
         </mvc:interceptor>
     </mvc:interceptors>
