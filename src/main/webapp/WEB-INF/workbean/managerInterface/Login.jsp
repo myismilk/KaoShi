@@ -36,7 +36,7 @@
                     dataType:"text",
                     success:function (result) {
                         if(result=="true"){
-                            window.location.href = "toManageHome";
+                            window.location.href = "toScManage";
                         }else {
                             $("#hint").html("用户名或密码错误");
                             return;

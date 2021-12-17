@@ -27,9 +27,15 @@
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <mvc:mapping path="/workbean/**"/>
-            <mvc:exclude-mapping path="/login"/>
-            <mvc:exclude-mapping path="/managerLogin"/>
-            <mvc:exclude-mapping path="/managerLoginVerify"/>
+            <mvc:exclude-mapping path="/**/fonts/*"/>
+             <mvc:exclude-mapping path="/**/*.css"/>
+            <mvc:exclude-mapping path="/**/*.js"/>
+            <mvc:exclude-mapping path="/**/*.png"/>
+            <mvc:exclude-mapping path="/**/*.gif"/>
+            <mvc:exclude-mapping path="/**/*.jpg"/>
+            <mvc:exclude-mapping path="/**/*.jpeg"/>
+            <mvc:exclude-mapping path="/**/*login*"/>
+            <mvc:exclude-mapping path="/**/*Login*"/>
             <bean class="com.wangkaiping.interceptors.OneInterceptors"/>
         </mvc:interceptor>
     </mvc:interceptors>

@@ -7,11 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
-public class QuestionManageController {
+public class ScQuestionManageController {
     @Autowired
     private QuestionService questionServiceImpl;
 
@@ -26,7 +27,7 @@ public class QuestionManageController {
         return modelAndView;
     }
 
-    //编辑试题按钮跳转到试题编辑界面
+    //编辑单选试题按钮跳转到试题编辑界面
     @RequestMapping("/toQuestionEdit")
     public ModelAndView toQuestionEdit(Integer questionId){
         ModelAndView modelAndView = new ModelAndView();
@@ -36,7 +37,7 @@ public class QuestionManageController {
         return modelAndView;
     }
 
-    //查看试题的详情信息获取试题内容：
+    //查看单选试题的详情信息获取试题内容：
     @RequestMapping("/getQuestionDetailsById")
     public ModelAndView getQuestionDetailsById(Integer questionId){
         ModelAndView modelAndView = new ModelAndView();
@@ -46,16 +47,38 @@ public class QuestionManageController {
         return modelAndView;
     }
 
-    //试题编辑的功能
+    //单选试题编辑的功能
     @RequestMapping("/toEditQuestion")
-    public void toEditQuestion(Question question){
-        System.out.println("进入到toEditQuestion");
-        System.out.println(question);
+    public String toEditQuestion(Question question){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String edit_time = sdf.format(new Date());
+        question.setEdit_time(edit_time);
+        questionServiceImpl.editScQuestion(question);
+        return "redirect:toScManage";
     }
-    //试题编辑的功能
-    @RequestMapping("/toEditQuestion2")
-    public void toEditQuestion2(HttpServletRequest request){
-        System.out.println("进入到toEditQuestion");
-        System.out.println(request.getAttribute("name"));
+
+    //跳转添加单选试题的界面
+    @RequestMapping("/toAddScQuestionInterface")
+    public String toAddScQuestion(){
+        return "workbean/managerInterface/questionManage/scManage/scQuestionAdd";
     }
+    //单选试题添加功能
+    @RequestMapping("/toAddScQuestion")
+    public String toAddScQuestion(Question question){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String create_time = sdf.format(new Date());
+        question.setCreate_time(create_time);
+        questionServiceImpl.AddScQuestion(question);
+        return "redirect:toScManage";
+    }
+
+
+    //删除单选题
+    @RequestMapping("/toDeleteScQuestion")
+    public String toDeleteScQuestion(Integer questionId){
+        questionServiceImpl.deleteQuestionById(questionId);
+        return "redirect:toScManage";
+    }
+
+
 }

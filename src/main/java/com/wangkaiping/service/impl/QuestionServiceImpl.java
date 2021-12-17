@@ -26,4 +26,24 @@ public class QuestionServiceImpl implements QuestionService {
     public Question getgetQuestionDetailsById(Integer questionId) {
         return questionDao.getQuestionById(questionId);
     }
+
+    @Override
+    public void editScQuestion(Question question) {
+        questionDao.editScQuestion(question);
+    }
+
+    @Override
+    public void AddScQuestion(Question question) {
+        questionDao.AddScQuestion(question);
+    }
+
+    @Override
+    public void deleteQuestionById(Integer questionId) {
+        questionDao.deleteQuestionById(questionId);
+    }
+
+    @Override
+    public List<Question> getAllMcQuestion() {
+        return questionDao.getAllMcQuestion();
+    }
 }

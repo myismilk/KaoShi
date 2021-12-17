@@ -4,7 +4,6 @@
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <html>
-
 <head>
 
     <base href="<%=basePath%>">

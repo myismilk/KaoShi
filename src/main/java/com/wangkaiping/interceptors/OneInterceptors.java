@@ -10,7 +10,8 @@ public class OneInterceptors implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if(request.getSession(false).getAttribute("user")==null){
-            System.out.println("进行了拦截");
+            response.sendRedirect("login.jsp");
+            return false;
         }
         return true;
     }

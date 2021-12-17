@@ -83,7 +83,7 @@
                 <a href="javascript:void(0)"><span class="icon color14"><i class="fa fa-book"></i></span>题库管理<span class="caret"></span></a>
                 <ul>
                     <li><a href="toScManage">单选试题管理</a></li>
-                    <li><a href="javascript:void(0)">多选试题管理</a></li>
+                    <li><a href="toMcManage">多选试题管理</a></li>
                     <li><a href="javascript:void(0)">判断试题管理</a></li>
                 </ul>
             </li>

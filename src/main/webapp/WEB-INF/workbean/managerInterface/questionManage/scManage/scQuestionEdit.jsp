@@ -1,6 +1,6 @@
 ﻿<%@ page import="com.wangkaiping.domain.Manage" %>
 <%@ page import="com.wangkaiping.domain.Question" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" pageEncoding="UTF-8" language="java" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,14 +9,13 @@
     Manage user = (Manage) request.getSession(false).getAttribute("user");
     Question question = (Question) request.getAttribute("question");
 %>
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <base href="<%=basePath%>">
     <meta charset="utf-8" />
-    <title>管理页面</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>管理页面</title>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="Content/Common/bootstrap-3.3.2-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="Content/Common/Font-Awesome-3.2.1/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -60,8 +59,6 @@
     </div>
     <!-- End Top Right -->
     <!-- END TOP -->
-    <!-- //////////////////////////////////////////////////////////////////////////// -->
-    <!-- //////////////////////////////////////////////////////////////////////////// -->
     <!-- START SIDEBAR -->
     <div class="sidebar clearfix">
         <ul class="sidebar-panel nav">
@@ -83,7 +80,7 @@
                 <a href="javascript:void(0)"><span class="icon color14"><i class="fa fa-book"></i></span>题库管理<span class="caret"></span></a>
                 <ul>
                     <li><a href="toScManage">单选试题管理</a></li>
-                    <li><a href="javascript:void(0)">多选试题管理</a></li>
+                    <li><a href="toMcManage">多选试题管理</a></li>
                     <li><a href="javascript:void(0)">判断试题管理</a></li>
                 </ul>
             </li>
@@ -120,7 +117,7 @@
                             试题修改：直接修改文本内容可提交修改
                         </div>
                         <div class="panel-body table-responsive">
-                            <form action="toEditQuestion" method="post">
+                            <form action="toEditQuestion" method="post" accept-charset="UTF-8">
                             <div class="form-group">
                                 <label class="form-label">试题编号：</label>
                                 <input type="text" name="question_id" class="form-control" value="<%=question.getQuestion_id()%>" readonly>
@@ -143,19 +140,17 @@
                             </form>
                         </div>
 
-                    </div>
                 </div>
-                <!-- End Panel -->
             </div>
-            <!-- End Row -->
+        </div>
 
 
-    <script src="Content/Common/jquery-1.11.1/jquery.min.js" type="text/javascript"></script>
-    <script src="Content/Common/bootstrap-3.3.2-dist/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="Content/Scripts/plugins.js" type="text/javascript"></script>
-    <script type="text/javascript" src="Content/Common/Scripts/bootstrap-select/bootstrap-select.js"></script>
-    <script type="text/javascript" src="Content/Common/Scripts/bootstrap-toggle/bootstrap-toggle.min.js"></script>
-    <script src="Content/Common/Scripts/datatables/datatables.min.js" type="text/javascript"></script>
+        <script src="Content/Common/jquery-1.11.1/jquery.min.js" type="text/javascript"></script>
+        <script src="Content/Common/bootstrap-3.3.2-dist/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="Content/Scripts/plugins.js" type="text/javascript"></script>
+        <script type="text/javascript" src="Content/Common/Scripts/bootstrap-select/bootstrap-select.js"></script>
+        <script type="text/javascript" src="Content/Common/Scripts/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+        <script src="Content/Common/Scripts/datatables/datatables.min.js" type="text/javascript"></script>
     </div>
 </body>
 
