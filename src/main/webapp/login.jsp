@@ -20,7 +20,9 @@
         <div style="text-align: center;margin-top: 30px;">
             <p><span class="p1">用户名</span><input id="userNname" type="text" name="userName"><label id="name_trip"></label></p>
             <p><span class="p1">密码</span><input id="password" type="password" name="password"><label id="password_trip"></label></p>
-            <input type="radio" name="identify" value="0">学生<input type="radio" name="identify" value="1">管理员<br/>
+            <div>
+                <a href="managerLogin" style="color: #00BFFF">点击前往管理员登录界面</a>
+            </div>
             <input type="submit" class="button"  value="登陆">
             <input type="reset" class="button" value="重置">
             <img src="image/LoginBackGround.jpg"/>
