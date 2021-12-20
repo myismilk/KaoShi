@@ -84,7 +84,7 @@
                 <ul>
                     <li><a href="toScManage">单选试题管理</a></li>
                     <li><a href="toMcManage">多选试题管理</a></li>
-                    <li><a href="javascript:void(0)">判断试题管理</a></li>
+                    <li><a href="toTFManage">判断试题管理</a></li>
                 </ul>
             </li>
             <li>
@@ -106,7 +106,7 @@
         <div class="page-header">
             <h1 class="title">题库管理</h1>
             <ol class="breadcrumb">
-                <li class="active">单选题管理</li>
+                <li class="active">单选题详情界面</li>
             </ol>
         </div>
 

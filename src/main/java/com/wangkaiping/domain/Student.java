@@ -1,5 +1,7 @@
 package com.wangkaiping.domain;
 
+import java.util.Objects;
+
 public class Student {
     private Integer student_id;
     private String student_username;
@@ -117,4 +119,5 @@ public class Student {
                 ", student_manage='" + student_manage + '\'' +
                 '}';
     }
+
 }

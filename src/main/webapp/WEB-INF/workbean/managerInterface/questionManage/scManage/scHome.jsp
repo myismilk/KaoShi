@@ -85,7 +85,7 @@
             <ul>
                 <li><a href="toScManage">单选试题管理</a></li>
                 <li><a href="toMcManage">多选试题管理</a></li>
-                <li><a href="javascript:void(0)">判断试题管理</a></li>
+                <li><a href="toTFManage">判断试题管理</a></li>
                 <%--<li><a href="javascript:void(0)">审核试题管理<span class="label label-danger">NEW</span></a></li>--%>
             </ul>
         </li>

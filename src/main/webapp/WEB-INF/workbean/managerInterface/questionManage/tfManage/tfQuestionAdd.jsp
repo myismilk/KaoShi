@@ -101,7 +101,7 @@
         <div class="page-header">
             <h1 class="title">题库管理</h1>
             <ol class="breadcrumb">
-                <li class="active">单选题添加界面</li>
+                <li class="active">判断题添加界面</li>
             </ol>
         </div>
 
@@ -115,22 +115,18 @@
                             试题添加：
                         </div>
                         <div class="panel-body table-responsive">
-                            <form action="toAddScQuestion" method="post">
+                            <form action="toAddTFQuestion" method="post">
                             <div class="form-group">
-                                <%--添加的试题的类型，当前是单选题界面--%>
-                                <input type="text" name="question_type" value="1" hidden>
+                                <%--添加的试题的类型，当前是多选题界面--%>
+                                <input type="text" name="question_type" value="3" hidden>
                                 <label class="form-label">试题题目：</label>
                                 <input type="text" name="question_topic" class="form-control" >
-                                <label class="form-label">A选项：</label>
-                                <input type="text" name="question_A" class="form-control">
-                                <label class="form-label">B选项：</label>
-                                <input type="text" name="question_B" class="form-control">
-                                <label class="form-label">C选项：</label>
-                                <input type="text" name="question_C" class="form-control">
-                                <label class="form-label">D选项：</label>
-                                <input type="text" name="question_D" class="form-control">
-                                <label class="form-label">试题答案：</label>
-                                <input type="text" name="answer" class="form-control">
+                                <label class="form-label">试题答案：</label><br>
+                                    <select name="answer">
+                                        <option value="√">√</option>
+                                        <option value="×">×</option>
+                                    </select><br>
+
                                 <label class="form-label">试题解析：</label>
                                 <input type="text" name="parsing" class="form-control">
                                     <%--试题创建者--%>

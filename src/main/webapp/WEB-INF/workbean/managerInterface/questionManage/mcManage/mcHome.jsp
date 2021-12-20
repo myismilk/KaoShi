@@ -83,8 +83,8 @@
                 <a href="javascript:void(0)"><span class="icon color14"><i class="fa fa-book"></i></span>题库管理<span class="caret"></span></a>
                 <ul>
                     <li><a href="toScManage">单选试题管理</a></li>
-                    <li><a href="javascript:void(0)">多选试题管理</a></li>
-                    <li><a href="javascript:void(0)">判断试题管理</a></li>
+                    <li><a href="toMcManage">多选试题管理</a></li>
+                    <li><a href="toTFManage">判断试题管理</a></li>
                     <%--<li><a href="javascript:void(0)">审核试题管理<span class="label label-danger">NEW</span></a></li>--%>
                 </ul>
             </li>
@@ -110,7 +110,7 @@
                 <li class="active">多选题管理</li>
             </ol>
             <div>
-                <a href="javascript:void(0)" class="btn btn-info" id="addScQuestionBtn"><i class="fa fa-edit"></i>添加多选试题 </a>
+                <a href="toAddMcQuestionInterface" class="btn btn-info" id="addScQuestionBtn"><i class="fa fa-edit"></i>添加多选试题 </a>
             </div>
         </div>
 
@@ -147,9 +147,9 @@
                                         <th><%=question.getCreate_by()%></th>
                                         <th><%=question.getEdit_time()%></th>
                                         <td>
-                                            <a href="toQuestionEdit?questionId=<%=question.getQuestion_id()%>" class="btn btn-info"><i class="fa fa-edit"></i>编辑试题 </a>
-                                            <a href="toDeleteScQuestion?questionId=<%=question.getQuestion_id()%>" class="btn btn-info"><i class="fa fa-trash"></i>删除试题 </a>
-                                            <a href="getQuestionDetailsById?questionId=<%=question.getQuestion_id()%>" class="btn btn-info"><i class="fa fa-file-text-o"></i>查看详情</a>
+                                            <a href="toMcQuestionEdit?questionId=<%=question.getQuestion_id()%>" class="btn btn-info"><i class="fa fa-edit"></i>编辑试题 </a>
+                                            <a href="toDeleteMcQuestion?questionId=<%=question.getQuestion_id()%>" class="btn btn-info"><i class="fa fa-trash"></i>删除试题 </a>
+                                            <a href="getMcQuestionDetailsById?questionId=<%=question.getQuestion_id()%>" class="btn btn-info"><i class="fa fa-file-text-o"></i>查看详情</a>
                                         </td>
                                     </tr>
                                 <%

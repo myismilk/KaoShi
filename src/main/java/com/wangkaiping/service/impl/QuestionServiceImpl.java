@@ -46,4 +46,29 @@ public class QuestionServiceImpl implements QuestionService {
     public List<Question> getAllMcQuestion() {
         return questionDao.getAllMcQuestion();
     }
+
+    @Override
+    public void editMcQuestion(Question question) {
+        questionDao.editMcQuestion(question);
+    }
+
+    @Override
+    public void AddMcQuestion(Question question) {
+        questionDao.AddMcQuestion(question);
+    }
+
+    @Override
+    public List<Question> getAllTFQuestion() {
+        return questionDao.getAllTFQuestion();
+    }
+
+    @Override
+    public void editTFQuestion(Question question) {
+        questionDao.editTFQuestion();
+    }
+
+    @Override
+    public void toAddTFQuestion(Question question) {
+        questionDao.toAddTFQuestion(question);
+    }
 }

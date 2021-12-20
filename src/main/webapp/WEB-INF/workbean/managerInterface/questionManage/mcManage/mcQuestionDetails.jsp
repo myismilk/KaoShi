@@ -1,17 +1,22 @@
 ﻿<%@ page import="com.wangkaiping.domain.Manage" %>
 <%@ page import="com.wangkaiping.domain.Question" %>
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%
     Manage user = (Manage) request.getSession(false).getAttribute("user");
+    Question question = (Question) request.getAttribute("question");
 %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <base href="<%=basePath%>">
+    <meta charset="utf-8" />
     <title>管理页面</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="Content/Common/bootstrap-3.3.2-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="Content/Common/Font-Awesome-3.2.1/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -101,7 +106,7 @@
         <div class="page-header">
             <h1 class="title">题库管理</h1>
             <ol class="breadcrumb">
-                <li class="active">单选题添加界面</li>
+                <li class="active">多选题详情界面</li>
             </ol>
         </div>
 
@@ -112,32 +117,36 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-title">
-                            试题添加：
+                            试题详情
                         </div>
                         <div class="panel-body table-responsive">
-                            <form action="toAddScQuestion" method="post">
                             <div class="form-group">
-                                <%--添加的试题的类型，当前是单选题界面--%>
-                                <input type="text" name="question_type" value="1" hidden>
+                                <label class="form-label">试题编号：</label>
+                                <input type="text" class="form-control" value="<%=question.getQuestion_id()%>" readonly>
+                                <label class="form-label">试题类型：</label>
+                                <input type="text" class="form-control" value="<%=question.getQuestion_type()%>" readonly>
                                 <label class="form-label">试题题目：</label>
-                                <input type="text" name="question_topic" class="form-control" >
+                                <input type="text" class="form-control" value="<%=question.getQuestion_topic()%>" readonly>
                                 <label class="form-label">A选项：</label>
-                                <input type="text" name="question_A" class="form-control">
+                                <input type="text" class="form-control" value="<%=question.getQuestion_A()%>" readonly>
                                 <label class="form-label">B选项：</label>
-                                <input type="text" name="question_B" class="form-control">
+                                <input type="text" class="form-control" value="<%=question.getQuestion_B()%>" readonly>
                                 <label class="form-label">C选项：</label>
-                                <input type="text" name="question_C" class="form-control">
+                                <input type="text" class="form-control" value="<%=question.getQuestion_C()%>" readonly>
                                 <label class="form-label">D选项：</label>
-                                <input type="text" name="question_D" class="form-control">
+                                <input type="text" class="form-control" value="<%=question.getQuestion_D()%>" readonly>
                                 <label class="form-label">试题答案：</label>
-                                <input type="text" name="answer" class="form-control">
+                                <input type="text" class="form-control" value="<%=question.getAnswer()%>" readonly>
                                 <label class="form-label">试题解析：</label>
-                                <input type="text" name="parsing" class="form-control">
-                                    <%--试题创建者--%>
-                                <input type="text" name="create_by" value="<%=user.getManage_id()%>" hidden>
+                                <input type="text" class="form-control" value="<%=question.getParsing()%>" readonly>
+                                <label class="form-label">创建时间：</label>
+                                <input type="text" class="form-control" value="<%=question.getCreate_time()%>" readonly>
+                                <label class="form-label">修改时间：</label>
+                                <input type="text" class="form-control" value="<%=question.getEdit_time()%>" readonly>
+                                <label class="form-label">创建人：</label>
+                                <input type="text" class="form-control" value="<%=question.getCreate_by()%>" readonly>
                             </div>
-                            <button type="submit" class="btn btn-info" id="editCommitBtn"><i class="fa fa-edit"></i></i>添加试题</button>
-                            </form>
+
                         </div>
 
                     </div>

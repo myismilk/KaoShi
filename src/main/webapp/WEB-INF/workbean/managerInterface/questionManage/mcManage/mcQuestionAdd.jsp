@@ -101,7 +101,7 @@
         <div class="page-header">
             <h1 class="title">题库管理</h1>
             <ol class="breadcrumb">
-                <li class="active">单选题添加界面</li>
+                <li class="active">多选题添加界面</li>
             </ol>
         </div>
 
@@ -115,10 +115,10 @@
                             试题添加：
                         </div>
                         <div class="panel-body table-responsive">
-                            <form action="toAddScQuestion" method="post">
+                            <form action="toAddMcQuestion" method="post">
                             <div class="form-group">
-                                <%--添加的试题的类型，当前是单选题界面--%>
-                                <input type="text" name="question_type" value="1" hidden>
+                                <%--添加的试题的类型，当前是多选题界面--%>
+                                <input type="text" name="question_type" value="2" hidden>
                                 <label class="form-label">试题题目：</label>
                                 <input type="text" name="question_topic" class="form-control" >
                                 <label class="form-label">A选项：</label>

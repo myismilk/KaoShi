@@ -17,4 +17,14 @@ public interface QuestionService {
     void deleteQuestionById(Integer questionId);
 
     List<Question> getAllMcQuestion();
+
+    void editMcQuestion(Question question);
+
+    void AddMcQuestion(Question question);
+
+    List<Question> getAllTFQuestion();
+
+    void editTFQuestion(Question question);
+
+    void toAddTFQuestion(Question question);
 }
