@@ -7,4 +7,9 @@
       select * from tbl_manage where manage_username=#{username} and manage_password=#{password}
     </select>
 
+    <!--获取这个管理者管理的所有用户-->
+    <select id="findAllStudentByManageId" resultType="com.wangkaiping.domain.Student">
+      select * from tbl_student where student_manage=#{manageId}
+    </select>
+
 </mapper>

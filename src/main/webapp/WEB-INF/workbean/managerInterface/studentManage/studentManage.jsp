@@ -1,14 +1,14 @@
 ﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.wangkaiping.domain.Manage" %>
-<%@ page import="com.wangkaiping.domain.Question" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.wangkaiping.domain.Student" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%
     Manage user = (Manage) request.getSession(false).getAttribute("user");
-    List<Question> questionList = (List<Question>) request.getAttribute("questionList");
+    List<Student> studentList = (List<Student>) request.getAttribute("studentList");
 %>
 <html>
 <head>
@@ -100,72 +100,121 @@
         <li><a href="javascript:void(0)"><span class="icon color12"><i class="fa fa-power-off"></i></span>退出系统</a></li>
     </ul>
 </div>
+
 <div class="content">
 
     <!-- Start Page Header -->
     <div class="page-header">
-        <h1 class="title">题库管理</h1>
+        <h1 class="title">用户资料管理</h1>
         <ol class="breadcrumb">
-            <li class="active">单选题管理</li>
+            <li><a href="index.html">用户及权限管理</a></li>
+            <li class="active">用户资料管理</li>
         </ol>
-        <div>
-            <a href="toAddScQuestionInterface" class="btn btn-info" id="addScQuestionBtn"><i class="fa fa-edit"></i>添加单选试题 </a>
+    </div>
+    <!-- End Page Header -->
+    <!-- Start Presentation -->
+    <div class="row presentation">
+        <div class="col-lg-8 col-md-6 titles">
+            <span class="icon color9-bg"><i class="fa fa-user"></i></span>
+            <h1>用户资料管理</h1>
+            <h4>可以进行添加、删除、修改、查找操作。</h4>
         </div>
+
+        <div class="col-lg-4 col-md-6">
+            <ul class="list-unstyled list">
+                <li><i class="fa fa-check"></i>查询用户
+                <li>
+                <li><i class="fa fa-check"></i>添加用户
+                <li>
+                <li><i class="fa fa-check"></i>删除用户
+                <li>
+                <li><i class="fa fa-check"></i>修改用户
+                <li>
+            </ul>
+        </div>
+
     </div>
 
-    <!-- Start Row -->
-    <div class="row">
-        <!-- Start Panel -->
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-title">
-                    试题资料
+
+    <!-- End Presentation -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- START CONTAINER -->
+    <div class="container-padding">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-title">
+                        您可以
+                        <ul class="panel-tools">
+                            <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                            <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                            <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <button type="button" id="iframeSingleUser" class="btn btn-rounded btn-default">添加单个用户</button>
+                        <button type="button" id="iframeMulitUser" class="btn btn-rounded btn-default">批量导入用户</button>
+                    </div>
                 </div>
-                <div class="panel-body table-responsive">
-                    <table id="example0" class="table display">
-                        <thead>
-                        <tr>
-                            <th>试题编号</th>
-                            <th>题型</th>
-                            <th>题目</th>
-                            <th>创建时间</th>
-                            <th>创建人</th>
-                            <th>修改时间</th>
-                            <th>编辑</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <%
-                            for(Question question:questionList) {
-                        %>
-                        <tr>
-                            <td class="text-center"><%=question.getQuestion_id()%></td>
-                            <th><%=question.getQuestion_type()%></th>
-                            <th><%=question.getQuestion_topic()%></th>
-                            <th><%=question.getCreate_time()%></th>
-                            <th><%=question.getCreate_by()%></th>
-                            <th><%=question.getEdit_time()%></th>
-                            <td>
-                                <a href="toQuestionEdit?questionId=<%=question.getQuestion_id()%>" class="btn btn-info"><i class="fa fa-edit"></i>编辑试题 </a>
-                                <a href="toDeleteScQuestion?questionId=<%=question.getQuestion_id()%>" class="btn btn-info"><i class="fa fa-trash"></i>删除试题 </a>
-                                <a href="getQuestionDetailsById?questionId=<%=question.getQuestion_id()%>" class="btn btn-info"><i class="fa fa-file-text-o"></i>查看详情</a>
-                            </td>
-                        </tr>
-                        <%
-                            }
-                        %>
-                        </tbody>
-
-                    </table>
-
-
-                </div>
-
             </div>
         </div>
-        <!-- End Panel -->
+        <!-- Start Row -->
+        <div class="row">
+            <!-- Start Panel -->
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-title">
+                        教师用户资料
+                        <ul class="panel-tools">
+                            <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                            <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                            <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="panel-body table-responsive">
+
+                        <table id="example0" class="table display">
+                            <thead>
+                            <tr>
+                                <th>学生学号</th>
+                                <th>学生姓名</th>
+                                <th>学生性别</th>
+                                <th>所属学院</th>
+                                <th>所属班级</th>
+                                <th>学历</th>
+                                <th>编辑</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <%
+                                for(Student student:studentList) {
+                            %>
+                            <tr>
+                                <td><%=student.getStudent_id()%></td>
+                                <td><%=student.getStudent_name()%></td>
+                                <td><%=student.getStudent_gender()%></td>
+                                <td><%=student.getStudent_college()%></td>
+                                <td><%=student.getStudent_grade()%></td>
+                                <td><%=student.getStudent_education()%></td>
+                                <td><a href="#">删除用户 </a><a href="#">修改用户 </a><a href="#">查看详情</a></td>
+                            </tr>
+
+                            <%
+                                }
+                            %>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End Panel -->
+        </div>
+        <!-- End Row -->
     </div>
-    <!-- End Row -->
+
+
 </div>
 <!-- END CONTAINER -->
 <script src="Content/Common/jquery-1.11.1/jquery.min.js" type="text/javascript"></script>
