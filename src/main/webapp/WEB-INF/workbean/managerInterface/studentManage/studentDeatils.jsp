@@ -8,7 +8,7 @@
 %>
 <%
     Manage user = (Manage) request.getSession(false).getAttribute("user");
-    List<Student> studentList = (List<Student>) request.getAttribute("studentList");
+    Student student = (Student) request.getAttribute("student");
 %>
 <html>
 <head>
@@ -113,106 +113,37 @@
     </div>
     <!-- End Page Header -->
     <!-- Start Presentation -->
-    <div class="row presentation">
-        <div class="col-lg-8 col-md-6 titles">
-            <span class="icon color9-bg"><i class="fa fa-user"></i></span>
-            <h1>用户资料管理</h1>
-            <h4>可以进行添加、删除、修改、查找操作。</h4>
-        </div>
-
-        <div class="col-lg-4 col-md-6">
-            <ul class="list-unstyled list">
-                <li><i class="fa fa-check"></i>查询用户
-                <li>
-                <li><i class="fa fa-check"></i>添加用户
-                <li>
-                <li><i class="fa fa-check"></i>删除用户
-                <li>
-                <li><i class="fa fa-check"></i>修改用户
-                <li>
-            </ul>
-        </div>
-
-    </div>
-
-
-    <!-- End Presentation -->
-    <!-- //////////////////////////////////////////////////////////////////////////// -->
-    <!-- START CONTAINER -->
-    <div class="container-padding">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-title">
-                        您可以
-                        <ul class="panel-tools">
-                            <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
-                            <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
-                            <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="panel-body">
-                        <button type="button" id="iframeSingleUser" class="btn btn-rounded btn-default">添加单个用户</button>
-                        <button type="button" id="iframeMulitUser" class="btn btn-rounded btn-default">批量导入用户</button>
-                    </div>
+    <!-- Start Row -->
+    <div class="row">
+        <!-- Start Panel -->
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-title">
+                    学生详情
                 </div>
-            </div>
-        </div>
-        <!-- Start Row -->
-        <div class="row">
-            <!-- Start Panel -->
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-title">
-                        教师用户资料
-                        <ul class="panel-tools">
-                            <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
-                            <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
-                            <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="panel-body table-responsive">
-
-                        <table id="example0" class="table display">
-                            <thead>
-                            <tr>
-                                <th>学生学号</th>
-                                <th>学生姓名</th>
-                                <th>学生性别</th>
-                                <th>所属学院</th>
-                                <th>所属班级</th>
-                                <th>学历</th>
-                                <th>编辑</th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            <%
-                                for(Student student:studentList) {
-                            %>
-                            <tr>
-                                <td><%=student.getStudent_id()%></td>
-                                <td><%=student.getStudent_name()%></td>
-                                <td><%=student.getStudent_gender()%></td>
-                                <td><%=student.getStudent_college()%></td>
-                                <td><%=student.getStudent_grade()%></td>
-                                <td><%=student.getStudent_education()%></td>
-                                <td><a href="#">删除用户 </a><a href="#">修改用户 </a><a href="toCheckStudentDetails/<%=student.getStudent_id()%>">查看详情</a></td>
-                            </tr>
-
-                            <%
-                                }
-                            %>
-                            </tbody>
-                        </table>
+                <div class="panel-body table-responsive">
+                    <div class="form-group">
+                        <label class="form-label">学生学号：</label>
+                        <input type="text" class="form-control" value="<%=student.getStudent_id()%>" readonly>
+                        <label class="form-label">学生姓名：</label>
+                        <input type="text" class="form-control" value="<%=student.getStudent_name()%>" readonly>
+                        <label class="form-label">学生性别：</label>
+                        <input type="text" class="form-control" value="<%=student.getStudent_gender()%>" readonly>
+                        <label class="form-label">学生班级：</label>
+                        <input type="text" class="form-control" value="<%=student.getStudent_grade()%>" readonly>
+                        <label class="form-label">所在院系：</label>
+                        <input type="text" class="form-control" value="<%=student.getStudent_college()%>" readonly>
+                        <label class="form-label">学历：</label>
+                        <input type="text" class="form-control" value="<%=student.getStudent_education()%>" readonly>
                     </div>
 
                 </div>
+
             </div>
-            <!-- End Panel -->
         </div>
-        <!-- End Row -->
+        <!-- End Panel -->
     </div>
+    <!-- End Row -->
 
 
 </div>
