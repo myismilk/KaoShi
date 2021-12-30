@@ -72,7 +72,8 @@
             <li>
                 <a href="javascript:void(0)"><span class="icon color7"><i class="fa fa-user"></i></span>学生管理<span class="caret"></span></a>
                 <ul>
-                    <li><a href="javascript:void(0)">用户资料管理</a></li>
+                    <li><a href="toStudentManageInterface">用户资料管理</a></li>
+                    <%--<li><a href="javascript:void(0)">权限管理</a></li>--%>
                 </ul>
             </li>
 

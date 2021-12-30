@@ -67,12 +67,10 @@
             <li><a href="javascript:void(0)"><span class="icon color8"></span>用户身份：管理员</a></li>
             <li class="sidetitle">系统导航</li>
             <li>
-                <a href="javascript:void(0)"><span class="icon color7"><i class="fa fa-user"></i></span>用户及权限管理<span class="caret"></span></a>
+                <a href="javascript:void(0)"><span class="icon color7"><i class="fa fa-user"></i></span>学生管理<span class="caret"></span></a>
                 <ul>
-                    <li><a href="javascript:void(0)">用户资料管理</a></li>
-                    <li><a href="javascript:void(0)">权限管理</a></li>
-                    <li><a href="javascript:void(0)">组织机构管理</a></li>
-                    <li><a href="javascript:void(0)">功能模块管理</a></li>
+                    <li><a href="toStudentManageInterface">用户资料管理</a></li>
+                    <%--<li><a href="javascript:void(0)">权限管理</a></li>--%>
                 </ul>
             </li>
 
@@ -117,7 +115,7 @@
                             试题修改：直接修改文本内容可提交修改
                         </div>
                         <div class="panel-body table-responsive">
-                            <form action="toEditMcQuestion" method="post" accept-charset="UTF-8">
+                            <form action="toTFManage" method="post" accept-charset="UTF-8">
                             <div class="form-group">
                                 <label class="form-label">试题编号：</label>
                                 <input type="text" name="question_id" class="form-control" value="<%=question.getQuestion_id()%>" readonly>
