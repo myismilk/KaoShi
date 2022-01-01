@@ -42,4 +42,13 @@ public class StudentManageController {
         return modelAndView;
     }
 
+    //进入用户修改界面的请求
+    @RequestMapping("toStudentEditInterface/{studentId}")
+    public ModelAndView toStudentEditInterface(@PathVariable("studentId") Integer studentId){
+        Student student = studentService.findStudentById(studentId);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("student",student);
+        modelAndView.setViewName("workbean/managerInterface/studentManage/studentEdit");
+        return modelAndView;
+    }
 }

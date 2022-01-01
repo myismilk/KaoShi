@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD MApper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangkaiping.dao.QuestionDao">
+    <sql id="AllColumn">
+        question_id,qt.type_name question_type,question_topic,question_A,question_B,question_C,question_D,answer,parsing,create_time,edit_time,m.manage_name create_by
+    </sql>
+
+    <!--根据id获取试题-->
+    <select id="getQuestionById" parameterType="java.lang.Integer" resultType="com.wangkaiping.domain.Question">
+        select
+        <include refid="AllColumn"/>
+        from tbl_question q
+        join
+        tbl_questiontype qt
+        on
+        q.question_type=qt.type_id
+        join tbl_manage m
+        on q.create_by=m.manage_id
+        where question_id=#{questionId}
+    </select>
+
+
+    <!--获取所有单选试题-->
+    <select id="getAllScQuestion" resultType="com.wangkaiping.domain.Question">
+        select
+        <include refid="AllColumn"/>
+        from tbl_question q
+        join
+        tbl_questiontype qt
+        on
+        q.question_type=qt.type_id
+        join tbl_manage m
+        on q.create_by=m.manage_id
+        where question_type=1
+        order by create_time desc
+    </select>
+
+
+    <!--获取所有多选题-->
+    <select id="getAllMcQuestion" resultType="com.wangkaiping.domain.Question">
+        select
+        <include refid="AllColumn"/>
+        from tbl_question q
+        join
+        tbl_questiontype qt
+        on
+        q.question_type=qt.type_id
+        join tbl_manage m
+        on q.create_by=m.manage_id
+        where question_type=2
+        order by create_time desc
+    </select>
+
+    <!--获取所有判断题-->
+    <select id="getAllTFQuestion" resultType="com.wangkaiping.domain.Question">
+        select
+        <include refid="AllColumn"/>
+        from tbl_question q
+        join
+        tbl_questiontype qt
+        on
+        q.question_type=qt.type_id
+        join tbl_manage m
+        on q.create_by=m.manage_id
+        where question_type=3
+        order by create_time desc
+    </select>
+
+
+    <!--修改单选试题-->
+    <update id="editScQuestion">
+        update tbl_question
+        <set>
+            <if test="question_topic!=null and question_topic!=''">
+            question_topic=#{question_topic},
+            </if>
+            <if test="question_A!=null and question_A!=''">
+                question_A=#{question_A},
+            </if>
+            <if test="question_B!=null and question_B!=''">
+                question_B=#{question_B},
+            </if>
+            <if test="question_C!=null and question_C!=''">
+                question_C=#{question_C},
+            </if>
+            <if test="question_D!=null and question_D!=''">
+                question_D=#{question_D},
+            </if>
+            <if test="answer!=null and answer!=''">
+                answer=#{answer},
+            </if>
+            <if test="parsing!=null and parsing!=''">
+                parsing=#{parsing},
+            </if>
+            <if test="edit_time!=null and edit_time!=''">
+                edit_time=#{edit_time}
+            </if>
+        </set>
+        where question_id=#{question_id}
+    </update>
+
+    <!--修改多选试题-->
+    <update id="editMcQuestion">
+        update tbl_question
+        <set>
+            <if test="question_topic!=null and question_topic!=''">
+                question_topic=#{question_topic},
+            </if>
+            <if test="question_A!=null and question_A!=''">
+                question_A=#{question_A},
+            </if>
+            <if test="question_B!=null and question_B!=''">
+                question_B=#{question_B},
+            </if>
+            <if test="question_C!=null and question_C!=''">
+                question_C=#{question_C},
+            </if>
+            <if test="question_D!=null and question_D!=''">
+                question_D=#{question_D},
+            </if>
+            <if test="answer!=null and answer!=''">
+                answer=#{answer},
+            </if>
+            <if test="parsing!=null and parsing!=''">
+                parsing=#{parsing},
+            </if>
+            <if test="edit_time!=null and edit_time!=''">
+                edit_time=#{edit_time}
+            </if>
+        </set>
+        where question_id=#{question_id}
+    </update>
+
+    <!--修改判断试题-->
+    <update id="editTFQuestion">
+        update tbl_question
+        <set>
+            <if test="question_topic!=null and question_topic!=''">
+                question_topic=#{question_topic},
+            </if>
+            <if test="question_A!=null and question_A!=''">
+                question_A=#{question_A},
+            </if>
+            <if test="question_B!=null and question_B!=''">
+                question_B=#{question_B},
+            </if>
+            <if test="question_C!=null and question_C!=''">
+                question_C=#{question_C},
+            </if>
+            <if test="question_D!=null and question_D!=''">
+                question_D=#{question_D},
+            </if>
+            <if test="answer!=null and answer!=''">
+                answer=#{answer},
+            </if>
+            <if test="parsing!=null and parsing!=''">
+                parsing=#{parsing},
+            </if>
+            <if test="edit_time!=null and edit_time!=''">
+                edit_time=#{edit_time}
+            </if>
+        </set>
+        where question_id=#{question_id}
+    </update>
+
+
+    <!--插入单选试题-->
+    <insert id="AddScQuestion">
+        insert into tbl_question(question_type,question_topic,question_A,question_B,question_C,question_D,answer,parsing,create_time,create_by)
+        values(#{question_type},#{question_topic},#{question_A},#{question_B},#{question_C},#{question_D},#{answer},#{parsing},#{create_time},#{create_by})
+    </insert>
+    <!--插入多选试题-->
+    <insert id="AddMcQuestion">
+        insert into tbl_question(question_type,question_topic,question_A,question_B,question_C,question_D,answer,parsing,create_time,create_by)
+        values(#{question_type},#{question_topic},#{question_A},#{question_B},#{question_C},#{question_D},#{answer},#{parsing},#{create_time},#{create_by})
+    </insert>
+    <!--插入判断试题-->
+    <insert id="toAddTFQuestion">
+        insert into tbl_question(question_type,question_topic,answer,parsing,create_time,create_by)
+        values(#{question_type},#{question_topic},#{answer},#{parsing},#{create_time},#{create_by})
+    </insert>
+
+
+    <!--根据id删试题-->
+    <delete id="deleteQuestionById">
+        delete from tbl_question where question_id=#{question_id}
+    </delete>
+</mapper>
